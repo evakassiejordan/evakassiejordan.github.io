@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momo Collective — Social Media Marketing</title>
+    <style>
+        :root {
+            --pink-soft: #F4C2C2;
+            --pink-warm: #E8A0BF;
+            --pink-deep: #D4A5A5;
+            --salt-white: #FAF9F6;
+            --sea-dark: #2C3E50;
+            --sea-mid: #5D6D7E;
+            --text-body: #4A4A4A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: var(--salt-white);
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            position: fixed;
+            width: 100%;
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--sea-dark);
+        }
+
+        .logo span {
+            color: var(--pink-warm);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--sea-mid);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-warm);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--salt-white) 0%, #F8E8E8 50%, var(--pink-soft) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232,160,191,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            color: var(--sea-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--pink-warm);
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--sea-mid);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            font-size: 0.95rem;
+            color: var(--pink-deep);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--sea-dark);
+            color: var(--salt-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--pink-warm);
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--pink-warm);
+            margin-bottom: 1rem;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--sea-dark);
+            margin-bottom: 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-text .highlight {
+            color: var(--pink-warm);
+            font-weight: 500;
+        }
+
+        .about-visual {
+            background: linear-gradient(145deg, var(--pink-soft), var(--salt-white));
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .about-visual .symbol {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-visual p {
+            font-size: 0.9rem;
+            color: var(--sea-mid);
+            font-style: italic;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 4rem;
+            background: var(--sea-dark);
+            color: var(--salt-white);
+        }
+
+        .services-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .services .section-label {
+            color: var(--pink-soft);
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(244,194,194,0.2);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--pink-warm);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--pink-soft);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: rgba(250,249,246,0.7);
+            line-height: 1.7;
+        }
+
+        /* Work/Portfolio Section */
+        .work {
+            padding: 6rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .work h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--sea-dark);
+            margin-bottom: 3rem;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .work-item {
+            background: linear-gradient(135deg, #F0E6E6, var(--salt-white));
+            padding: 3rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--pink-warm);
+        }
+
+        .work-item .client {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--pink-warm);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--sea-dark);
+            margin-bottom: 1rem;
+        }
+
+        .work-item p {
+            color: var(--sea-mid);
+            font-size: 0.95rem;
+        }
+
+        .work-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--pink-warm);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--sea-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 4rem;
+            background: linear-gradient(180deg, var(--salt-white), #F5E6E6);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--sea-dark);
+            margin-bottom: 1rem;
+        }
+
+        .contact-email {
+            font-size: 1.5rem;
+            color: var(--pink-warm);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .contact-email:hover {
+            border-bottom-color: var(--pink-warm);
+        }
+
+        .contact-location {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--sea-mid);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 4rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--sea-mid);
+            border-top: 1px solid rgba(244,194,194,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-grid,
+            .services-grid,
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about,
+            .services,
+            .work,
+            .contact {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><span>momo</span> collective</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline">Cornish Roots &middot; Global Reach</p>
+            <h1>Social media with <em>soul</em></h1>
+            <p class="hero-subtitle">Momo Collective crafts scroll-stopping content for brands that dare to stand out. From Cornwall to Tokyo, we bring pink-minded creativity to every feed.</p>
+            <a href="#contact" class="cta-button">Start a Conversation</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <p class="section-label">Our Story</p>
+        <h2>Why Momo?</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p><span class="highlight">Momo</span> means peach — and pink — in Japanese. It represents the soft boldness we bring to every campaign: feminine energy, fearless strategy, and a colour palette that refuses to blend in.</p>
+                <p>Founded on the Cornish coast at 21, Momo Collective bridges Japanese fashion sensibility with British seaside grit. We don't just manage social media — we <span class="highlight">curate identities</span>, build communities, and turn casual scrollers into loyal customers.</p>
+                <p>Whether you're a heritage fashion house or a local café, we believe every brand deserves a feed that feels like <span class="highlight">art</span>.</p>
+            </div>
+            <div class="about-visual">
+                <div class="symbol">🌸</div>
+                <p>"Pink is not just a colour. It's an attitude."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <p class="section-label">What We Do</p>
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Content Creation</h3>
+                    <p>Scroll-stopping photography, video, and copy tailored to your brand voice. From TikTok trends to editorial Instagram grids.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Strategy & Planning</h3>
+                    <p>Data-driven content calendars, audience analysis, and platform-specific strategies that turn followers into customers.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Community Management</h3>
+                    <p>Authentic engagement, DM management, and community building that makes your audience feel seen and valued.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Paid Social</h3>
+                    <p>Meta and TikTok ad campaigns optimised for ROAS. We test, learn, and scale what works.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Influencer Outreach</h3>
+                    <p>Connecting your brand with creators who align with your values — from micro-influencers to established names.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Brand Identity</h3>
+                    <p>Visual direction, tone of voice, and social-first brand guidelines that make you unmistakable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <p class="section-label">Selected Work</p>
+        <h2>Case Studies</h2>
+        <div class="work-grid">
+            <div class="work-item">
+                <p class="client">Independent Fashion Label</p>
+                <h3>Tokyo Dreams Collection Launch</h3>
+                <p>Full social campaign for a UK-based Japanese-inspired fashion brand. Content strategy, influencer seeding, and paid social driving launch week sales.</p>
+                <div class="work-stats">
+                    <div class="stat">
+                        <div class="stat-number">340%</div>
+                        <div class="stat-label">Engagement</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">12K</div>
+                        <div class="stat-label">New Followers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item">
+                <p class="client">Coastal Lifestyle Brand</p>
+                <h3>Cornwall to California</h3>
+                <p>Taking a local Cornish skincare brand to international audiences through TikTok storytelling and UGC campaigns.</p>
+                <div class="work-stats">
+                    <div class="stat">
+                        <div class="stat-number">2.1M</div>
+                        <div class="stat-label">Views</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8.5%</div>
+                        <div class="stat-label">Conversion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <p class="section-label">Let's Talk</p>
+        <h2>Start Something Pink</h2>
+        <a href="mailto:hello@momo.co" class="contact-email">hello@momo.co</a>
+        <p class="contact-location">Based in Cornwall &middot; Working Worldwide</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Momo Collective. Crafted with salt and sakura.</p>
+    </footer>
+
+</body>
+</html>
